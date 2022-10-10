@@ -1,6 +1,7 @@
 import serviceProduct from '../services/products';
 import { Request, Response } from 'express';
 import HTTP_CODE from '../util.ts/HTTP_CODES';
+import IProduct from '../interfaces/IProduct';
 
 const service = new serviceProduct();
 
@@ -16,6 +17,11 @@ class ControllerProducts {
         return res.status(HTTP_CODE.OK).json(product);
     }
     
+    async addProduct(req: Request<unknown, unknown, IProduct> , res: Response) {
+      const body = req.body;
+      const product = await service.addProduct(body);
+      return res.status(HTTP_CODE.CREATED).json(product);
+    }
 }
 
 export default ControllerProducts;

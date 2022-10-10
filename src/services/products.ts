@@ -15,8 +15,8 @@ class serviceProduct {
 
   async addProduct(data: IProduct) {
     const product = await this.model.addProduct(data);
-    return product 
-  } 
+    return product;
+  }
 }
 
 export default serviceProduct;
